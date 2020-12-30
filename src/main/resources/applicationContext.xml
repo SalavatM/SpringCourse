@@ -20,7 +20,9 @@
     </bean>
 
     <bean id="musicPlayer"
-          class="ru.alishev.springcourse.MusicPlayer">
+          class="ru.alishev.springcourse.MusicPlayer"
+          scope="prototype">
+
         <!--- зависимость через конструктор
         <constructor-arg ref="musicBean"/>
         -->
