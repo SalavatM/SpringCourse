@@ -10,13 +10,24 @@
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
     <bean id="musicBean"
-          class="ru.alishev.springcourse.ClassicalMusic">
+          class="ru.alishev.springcourse.ClassicalMusic"
+            init-method="doInit"
+            destroy-method="doDestroy"
+            factory-method="getClassicalMusic">
     </bean>
+
     <bean id="musicBean2"
-          class="ru.alishev.springcourse.RockMusic">
+          class="ru.alishev.springcourse.RockMusic"
+          init-method="doInit"
+          destroy-method="doDestroy"
+          scope="prototype">
     </bean>
+
     <bean id="musicBean3"
-          class="ru.alishev.springcourse.TranceMusic">
+          class="ru.alishev.springcourse.TranceMusic"
+          init-method="doInit"
+          destroy-method="doDestroy"
+          scope="prototype">
     </bean>
 
     <bean id="musicPlayer"
