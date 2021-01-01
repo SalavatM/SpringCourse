@@ -1,10 +1,19 @@
 package ru.alishev.springcourse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class MusicPlayer {
+//    @Autowired  //внедрение зависимости через поле
     private Music music;
+
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
+
     private String name;
     private int volume;
     private List<Music> musicList = new ArrayList<>();
@@ -32,16 +41,30 @@ public class MusicPlayer {
     public MusicPlayer() {}
 
     //IoC
+//    @Autowired  //внедрение зависимости через конструктор
     public MusicPlayer(Music music) {
         this.music = music;
     }
 
+//    @Autowired  //внедрение зависимости через сеттер
     public void setMusic(Music music) {
         this.music = music;
     }
 
+    @Autowired  //внедрение 2 зависимостей через конструктор
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
+    }
+
     public void playMusic() {
-        System.out.println("Playing: " + music.getSong());
+//        System.out.println("Playing: " + music.getSong());
+        System.out.println("Playing: " + classicalMusic.getSong());
+        System.out.println("Playing: " + rockMusic.getSong());
+    }
+
+    public String playMusicStr() {
+        return "Playing: " + classicalMusic.getSong();
     }
 
     public void playMusicList() {

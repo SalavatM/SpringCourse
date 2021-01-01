@@ -11,13 +11,13 @@ public class ClassicalMusic implements Music {
         return new ClassicalMusic();
     }
 
-    public void doInit() {
-        System.out.println("Doing initialization classical music");
-    }
-
-    public void doDestroy() {
-        System.out.println("Doing destruction classical music");
-    }
+//    public void doInit() {
+//        System.out.println("Doing initialization classical music");
+//    }
+//
+//    public void doDestroy() {
+//        System.out.println("Doing destruction classical music");
+//    }
 
     @Override
     public String getSong() {

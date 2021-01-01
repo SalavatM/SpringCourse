@@ -2,7 +2,7 @@ package ru.alishev.springcourse;
 
 import org.springframework.stereotype.Component;
 
-@Component("musicBean")
+@Component
 public class RockMusic implements Music{
 
 //    public void doInit() {
