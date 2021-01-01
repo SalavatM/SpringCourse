@@ -7,37 +7,25 @@ public class TestSpring {
         ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        ClassicalMusic classicalMusic = context.getBean("musicBean", ClassicalMusic.class);
-        System.out.println(classicalMusic.getSong());
-
-        RockMusic rockMusic = context.getBean("musicBean2", RockMusic.class);
-        System.out.println(rockMusic.getSong());
-
-        TranceMusic tranceMusic = context.getBean("musicBean3", TranceMusic.class);
-        System.out.println(tranceMusic.getSong());
-
-        TranceMusic tranceMusic2 = context.getBean("musicBean3", TranceMusic.class);
-        System.out.println(tranceMusic2.getSong());
-
-//        Music music = context.getBean("musicBean", Music.class);
-//        MusicPlayer musicPlayer = new MusicPlayer(music);
-
-//        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-//        MusicPlayer musicPlayer2 = context.getBean("musicPlayer", MusicPlayer.class);
+//        ClassicalMusic classicalMusic = context.getBean("musicBean", ClassicalMusic.class);
+//        System.out.println(classicalMusic.getSong());
 //
-//        boolean comparison = musicPlayer == musicPlayer2;
-//        System.out.println(comparison);
+//        RockMusic rockMusic = context.getBean("musicBean2", RockMusic.class);
+//        System.out.println(rockMusic.getSong());
 //
-//        System.out.println(musicPlayer);
-//        System.out.println(musicPlayer2);
+//        TranceMusic tranceMusic = context.getBean("musicBean3", TranceMusic.class);
+//        System.out.println(tranceMusic.getSong());
 //
-//        musicPlayer.setVolume(10);
+//        TranceMusic tranceMusic2 = context.getBean("musicBean3", TranceMusic.class);
+//        System.out.println(tranceMusic2.getSong());
 
-        //musicPlayer.playMusic();
+        Music music = context.getBean("musicBean", Music.class);
+        MusicPlayer musicPlayer = new MusicPlayer(music);
+        musicPlayer.playMusic();
 
-        //System.out.println(musicPlayer.getName());
-//        System.out.println(musicPlayer.getVolume());
-//        System.out.println(musicPlayer2.getVolume());
+        Music music2 = context.getBean("classicalMusic", Music.class);
+        MusicPlayer musicPlayer2 = new MusicPlayer(music2);
+        musicPlayer2.playMusic();
 
         context.close();
     }
