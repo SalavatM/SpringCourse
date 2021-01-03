@@ -2,6 +2,7 @@ package ru.alishev.springcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -15,8 +16,12 @@ public class MusicPlayer {
     private Music music;
     private Music music2;
 
+    @Value("${musicPlayer.name}")   //внедрение значения из файла конфигурации
     private String name;
+
+    @Value("${musicPlayer.volume}") //внедрение значения из файла конфигурации
     private int volume;
+
     private List<Music> musicList = new ArrayList<>();
 
     @Autowired
