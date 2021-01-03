@@ -1,22 +1,29 @@
 package ru.alishev.springcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class MusicPlayer {
 //    @Autowired  //внедрение зависимости через поле
+//    @Qualifier("classicalMusic")
     private Music music;
-
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
+    private Music music2;
 
     private String name;
     private int volume;
     private List<Music> musicList = new ArrayList<>();
+
+    @Autowired
+    public MusicPlayer(@Qualifier("classicalMusic") Music music, @Qualifier("rockMusic") Music music2) {
+        this.music = music;
+        this.music2 = music2;
+    }
 
     public String getName() {
         return name;
@@ -51,20 +58,33 @@ public class MusicPlayer {
         this.music = music;
     }
 
-    @Autowired  //внедрение 2 зависимостей через конструктор
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
-    }
+//    @Autowired  //внедрение 2 зависимостей через конструктор
+//    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic) {
+//        this.classicalMusic = classicalMusic;
+//        this.rockMusic = rockMusic;
+//    }
 
-    public void playMusic() {
+    public void playMusic(MusicGenre genre) {
+        Random random = new Random();
+
+        // случайное целое число между 0 и 2
+        int randomNumber = random.nextInt(3);
+
+        if (genre == MusicGenre.CLASSICAL) {
+            // случайная классическая песня
+            System.out.println(music.getSongs().get(randomNumber));
+        } else {
+            // случайная рок песня
+            System.out.println(music2.getSongs().get(randomNumber));
+        }
+
 //        System.out.println("Playing: " + music.getSong());
-        System.out.println("Playing: " + classicalMusic.getSong());
-        System.out.println("Playing: " + rockMusic.getSong());
+//        System.out.println("Playing: " + classicalMusic.getSong());
+//        System.out.println("Playing: " + rockMusic.getSong());
     }
 
     public String playMusicStr() {
-        return "Playing: " + classicalMusic.getSong();
+        return "Playing: " + music.getSong() + ", " + music2.getSong();
     }
 
     public void playMusicList() {
