@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Component
+//@Component
 public class MusicPlayer {
 //    @Autowired  //внедрение зависимости через поле
 //    @Qualifier("classicalMusic")
@@ -24,7 +24,7 @@ public class MusicPlayer {
 
     private List<Music> musicList = new ArrayList<>();
 
-    @Autowired
+    //@Autowired
     public MusicPlayer(@Qualifier("classicalMusic") Music music, @Qualifier("rockMusic") Music music2) {
         this.music = music;
         this.music2 = music2;
@@ -58,6 +58,10 @@ public class MusicPlayer {
         this.music = music;
     }
 
+    public MusicPlayer(List<Music> musicList) {
+        this.musicList = musicList;
+    }
+
 //    @Autowired  //внедрение зависимости через сеттер
     public void setMusic(Music music) {
         this.music = music;
@@ -89,7 +93,11 @@ public class MusicPlayer {
     }
 
     public String playMusicStr() {
-        return "Playing: " + music.getSong() + ", " + music2.getSong();
+        Random random = new Random();
+
+        return "Playing: " + musicList.get(random.nextInt(musicList.size())).getSong()
+                + " with volume " + this.volume;
+        //return "Playing: " + music.getSong() + ", " + music2.getSong();
     }
 
     public void playMusicList() {

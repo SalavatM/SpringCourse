@@ -7,6 +7,12 @@ public class TranceMusic implements Music {
 
     private List<String> songs = new ArrayList<>();
 
+    {
+        songs.add("All For Love");
+        songs.add("Eternal");
+        songs.add("Dusk");
+    }
+
     public void doInit() {
         System.out.println("Doing initialization trance music");
     }
