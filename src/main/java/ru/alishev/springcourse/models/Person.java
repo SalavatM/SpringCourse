@@ -8,6 +8,7 @@ public class Person {
     private String name;
 
     public Person() {
+
     }
 
     public Person(int id, String name) {
